@@ -2,10 +2,10 @@
 
 topic "Fetching google chrome"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i --force-depends google-chrome-stable_current_amd64.deb
+dpkg -i --force-depends google-chrome-stable_current_amd64.deb
 
 topic "Chromedriver"
 LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
 wget http://chromedriver.storage.googleapis.com/$LATEST/chromedriver_linux64.zip
 
-unzip chromedriver_linux64.zip && sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
+unzip chromedriver_linux64.zip && ln -s $PWD/chromedriver /usr/local/bin/chromedriver
