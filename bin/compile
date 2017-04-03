@@ -1,11 +1,10 @@
 #!/bin/sh
 
 topic "Fetching google chrome"
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-dpkg -i --force-depends google-chrome-stable_current_amd64.deb
+CHROME_URL="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+curl $CHROME_URL -s -o $APT_CACHE_DIR/archives/google-chrome-stable_current_amd64.deb
 
-topic "Chromedriver"
-LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
-wget http://chromedriver.storage.googleapis.com/$LATEST/chromedriver_linux64.zip
-
-unzip chromedriver_linux64.zip && ln -s $PWD/chromedriver /usr/local/bin/chromedriver
+# Download google chrome driver
+topic "Downloading and installing ChromeDriver"
+chromedriver_url="http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip"
+curl $chromedriver_url -s -o $BUILD_DIR/vendor/selenium/bin/chromedriver.zip
