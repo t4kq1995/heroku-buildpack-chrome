@@ -1,10 +1,10 @@
 #!/bin/sh
 
 topic "Fetching google chrome"
-CHROME_URL="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-curl $CHROME_URL -s -o $APT_CACHE_DIR/archives/google-chrome-stable_current_amd64.deb
+cd $HOME/Downloads
+wget https://chromedriver.googlecode.com/files/chromedriver_linux64_20.0.1133.0.zip
+unzip chromedriver_linux64_20.0.1133.0.zip
 
-# Download google chrome driver
-topic "Downloading and installing ChromeDriver"
-chromedriver_url="http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip"
-curl $chromedriver_url -s -o $BUILD_DIR/vendor/selenium/bin/chromedriver.zip
+mkdir -p $HOME/bin
+mv chromedriver $HOME/bin
+echo "export PATH=$PATH:$HOME/bin" >> $HOME/.bash_profile
