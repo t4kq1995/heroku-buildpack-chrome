@@ -1,0 +1,5 @@
+#!/bin/sh
+
+topic "Fetching google chrome"
+CHROME_URL="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+curl $CHROME_URL -s -o $APT_CACHE_DIR/archives/google-chrome-stable_current_amd64.deb
